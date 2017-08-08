@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.domain.SysMenuPrivilege" table="sys_menu_privilege">
+		<!-- 处理联合主键 -->
+		<composite-id name="id" class="cn.itcast.crm.domain.SysMenuPrivilegeId">
+			<!-- 处理联合主键roleId -->
+			<key-property name="roleId" type="string">
+				<column name="roleId" length="36">
+				</column>
+			</key-property>
+			<!-- 处理联合主键menuModule -->
+			<key-property name="menuModule" type="string">
+				<column name="menuModule" length="30">
+				</column>
+			</key-property>
+			<!-- 处理联合主键menuPrivilege -->
+			<key-property name="menuPrivilege" type="string">
+				<column name="menuPrivilege" length="30">
+				</column>
+			</key-property>
+		</composite-id>
+	</class>
+</hibernate-mapping>

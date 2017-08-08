@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3307/itcast0228crm</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.autocommit">true</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">true</property>
+		
+		<mapping resource="cn/itcast/crm/domain/SysUserGroup.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysRole.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysUser.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysPopedom.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysPopedomPrivilege.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysMenu.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysMenuPrivilege.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/Company.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysDictionaryType.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/Province.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/City.hbm.xml"/>
+		<mapping resource="cn/itcast/crm/domain/SysCodeRule.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

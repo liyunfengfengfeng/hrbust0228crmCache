@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.domain.SysCodeRule" table="sys_code_rule">
+		
+		<!-- 处理id编号 -->
+		<id name="id" type="java.lang.Integer">
+			<column name="id" ></column>
+			<generator class="identity"></generator>
+		</id>
+		
+		<!-- 处理module模块名称(固定) -->
+		<property name="module" type="string">
+			<column name="module" length="20">
+			</column>
+		</property>
+		
+		<!-- 处理areaPrefix编码前缀(可变)-->
+		<property name="areaPrefix" type="string">
+			<column name="areaPrefix" length="20">
+			</column>
+		</property>
+		
+		<!-- 处理areaTime日期位(可变)-->
+		<property name="areaTime" type="string">
+			<column name="areaTime" length="20">
+			</column>
+		</property>
+		
+		<!-- 处理glideBit流水位(可变)-->
+		<property name="glideBit" type="java.lang.Integer">
+			<column name="glideBit" length="11">
+			</column>
+		</property>
+		
+		<!-- 处理currentCode预览(显示的提供看的)-->
+		<property name="currentCode" type="string">
+			<column name="currentCode" length="50">
+			</column>
+		</property>
+		
+		<!-- tabName表名(固定) -->
+		<property name="tabName" type="string">
+			<column name="tabName" length="50">
+			</column>
+		</property>
+		
+		<!-- available是否有效(Y和N两个值,如果是保存是Y -->
+		<property name="available" type="string">
+			<column name="available" length="10">
+			</column>
+		</property>
+		
+		<!-- nextseq下次产生的序号 -->
+		<property name="nextseq" type="string">
+			<column name="nextseq" length="20">
+			</column>
+		</property>
+		
+		<!-- curDate序号对应的日期(yyyyMMdd) -->
+		<property name="curDate" type="string">
+			<column name="curDate" length="10">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.domain.SysDictionaryType" table="sys_dictionary_type">
+		<!-- 处理id主键 -->
+		<id name="id" type="java.lang.Integer">
+			<column name="id" length="11"></column>
+		</id>
+		<!-- 处理sort属性 -->
+		<property name="sort" type="java.lang.Integer">
+			<column name="sort" length="11">
+			</column>
+		</property>
+		<!-- 处理remark属性 -->
+		<property name="remark" type="string">
+			<column name="remark" length="11">
+			</column>
+		</property>
+		<!-- 处理code属性 -->
+		<property name="code" type="string">
+			<column name="code" length="100">
+			</column>
+		</property>
+		<!-- 处理value属性 -->
+		<property name="value" type="string">
+			<column name="value" length="200">
+			</column>
+		</property>
+		<!-- 处理sysFlag属性 -->
+		<property name="sysFlag" type="string">
+			<column name="sysFlag" length="1">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

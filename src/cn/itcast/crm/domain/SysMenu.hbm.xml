@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.domain.SysMenu" table="sys_menu">
+		<!-- 处理联合主键 -->
+		<composite-id name="id" class="cn.itcast.crm.domain.SysMenuId">
+			<key-property name="menuModule" type="string">
+				<column name="menuModule" length="30">
+				</column>
+			</key-property>
+			<key-property name="menuPrivilege" type="string">
+				<column name="menuPrivilege" length="30">
+				</column>
+			</key-property>
+		</composite-id>
+		<!-- 处理sort属性 -->
+		<property name="sort" type="java.lang.Integer">
+			<column name="sort" length="11">
+			</column>
+		</property>
+		<!-- 处理menuName属性 -->
+		<property name="menuName" type="string">
+			<column name="menuName" length="200">
+			</column>
+		</property>
+		<!-- 处理title属性 -->
+		<property name="title" type="string">
+			<column name="title" length="200">
+			</column>
+		</property>
+		<!-- 处理url属性 -->
+		<property name="url" type="string">
+			<column name="url" length="200">
+			</column>
+		</property>
+		<!-- 处理target属性 -->
+		<property name="target" type="string">
+			<column name="target" length="20">
+			</column>
+		</property>
+		<!-- 处理icon属性 -->
+		<property name="icon" type="string">
+			<column name="icon" length="20">
+			</column>
+		</property>
+		<!-- 处理remark属性 -->
+		<property name="remark" type="string">
+			<column name="remark" length="65535">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.domain.SysPopedomPrivilege" table="sys_popedom_privilege">
+		<composite-id name="id" class="cn.itcast.crm.domain.SysPopedomPrivilegeId">
+			<!-- 处理roleId -->
+			<key-property name="roleId" type="string">
+			<column name="roleId" length="36">
+			</column>
+			</key-property>
+			<!-- 处理popedom_Module -->
+			<key-property name="popedom_Module" type="string">
+				<column name="popedom_Module" length="30">
+				</column>
+			</key-property>
+			<!-- 处理popedom_Privilege -->
+			<key-property name="popedom_Privilege" type="string">
+				<column name="popedom_Privilege" length="30">
+				</column>
+			</key-property>
+		</composite-id>
+	</class>
+</hibernate-mapping>

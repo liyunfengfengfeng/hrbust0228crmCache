@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.domain.City" table="b_city">
+		<!-- 处理id主键#城市编号 -->
+		<id name="id" type="java.lang.Integer">
+			<column name="id" ></column>
+			<generator class="identity"></generator>
+		</id>
+		<!-- 处理name属性#城市名称 -->
+		<property name="name" type="string">
+			<column name="name" length="100">
+			</column>
+		</property>
+		<!-- 处理pycode属性 #拼音码-->
+		<property name="pycode" type="string">
+			<column name="pycode" length="50">
+			</column>
+		</property>
+		<!-- 处理pid属性 #省份id-->
+		<property name="pid" type="java.lang.Integer">
+			<column name="pid" length="11">
+			</column>
+		</property>
+		<!-- 处理postcode属性 #邮政编码-->
+		<property name="postcode" type="string">
+			<column name="postcode" length="50">
+			</column>
+		</property>
+		<!-- 处理areacode属性 #区域编码-->
+		<property name="areacode" type="string">
+			<column name="areacode" length="50">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

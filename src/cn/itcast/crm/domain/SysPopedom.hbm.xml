@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.crm.domain.SysPopedom" table="sys_popedom">
+		<!-- 处理联合主键 -->
+		<composite-id name="id" class="cn.itcast.crm.domain.SysPopedomId">
+			<key-property name="popedom_Module" type="string">
+				<column name="popedom_Module" length="30"></column>
+			</key-property>
+			<key-property name="popedom_Privilege" type="string">
+				<column name="popedom_Privilege" length="30"></column>
+			</key-property>
+		</composite-id>
+		<!-- 处理联合排序 -->
+		<property name="sort" type="java.lang.Integer">
+			<column name="sort" length="11"></column>
+		</property>
+		<!-- 处理联合提示 -->
+		<property name="title" type="string">
+			<column name="title" length="200"></column>
+		</property>
+		<!-- 处理联合备注 -->
+		<property name="remark" type="string">
+			<column name="remark" length="65535"></column>
+		</property>
+		<!-- 处理联合标题-->
+		<property name="popedom_Name" type="string">
+			<column name="popedom_Name" length="200"></column>
+		</property>
+	</class>
+</hibernate-mapping>

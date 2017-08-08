@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="hrbust0228crmCache"
+  id="myeclipse.1488277065612"
+  context-root="/hrbust0228crmCache"
+  j2ee-spec="5.0"
+  archive="hrbust0228crmCache.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

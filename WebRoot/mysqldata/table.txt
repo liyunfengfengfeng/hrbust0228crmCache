@@ -1,0 +1,206 @@
+部门信息表
+create table sys_user_group(
+id Integer not null auto_increment,
+remark text,
+name varchar(100) not null,
+principle varchar(50) not null,
+inclument varchar(200) not null,
+primary key(id)
+);
+权限组表
+create table sys_role(
+	id varchar(36),
+	remark text,
+	name varchar(100) default null,
+	primary key(id)
+);
+系统用户表
+sys_user
+create table sys_user(
+id Integer(11) not null auto_increment,#编号
+creator varchar(100) default null,#创建人
+createTime varchar(100) default null,#创建时间
+updater varchar(100) default null,#修改人
+updateTime varchar(100) default null,#修改时间
+remark text default null,#备注
+name varchar(150) default null,#用户名
+cnName varchar(100) default null,#中文名
+password varchar(100) default null,#密码
+address varchar(200) default null,#家庭地址
+telephone varchar(20) default null,#家庭电话
+email varchar(100) default null,#电子邮件
+beginDate date default null,#起始有效期
+endDate date default null,#终止有效期
+roleId varchar(36) default null,#权限组id   外键
+groupId Integer default null,#所属部门                    外键
+accessFileLevel varchar(100) default null,#未命名
+status varchar(10) default null,#状态
+commendPeople varchar(100) default null,#推荐人
+moveTelephone varchar(20) default null,#移动电话
+nowAddress varchar(200) default null,#现住宅地址
+nowTelephone varchar(20) default null,#现住宅电话
+identityCode varchar(30) default null,#身份证号码
+insuranceCode varchar(50) default null,#社会保险号
+instancePeople varchar(100) default null,#紧急联系人
+instanceTelephone varchar(30) default null,#紧急联系电话
+sex varchar(10) default null,#性别
+birthday date default null,#出生日期
+workerType varchar(100) default null,#职员类别
+work varchar(100) default null,#职务
+workTime date default null,#入职时间
+highSchool varchar(200) default null,#最高学历
+finishSchool varchar(100) default null,#毕业学校
+finishSchoolTime date default null,#毕业时间
+conSoleName varchar(100) default null,#配偶姓名
+youngerName varchar(100) default null,#子女姓名
+officeTelephone varchar(20) default null,#办公电话
+consoleTelephone varchar(20) default null,#配偶电话
+consoleCompany varchar(100) default null,#配偶工作单位
+strongSuit text default null,#偏好特长
+commuNicate text default null,#信息沟通
+bringUp text default null,#培训情况
+organiZation  text default null,#组织能力
+analise text default null,#分析能力
+planning text default null,#计划能力
+emploder text default null,#人员开发 
+primary key(id)
+);
+
+添加约束
+alter table sys_user add constraint sys_user_fk2 foreign key(roleId) references sys_role(id);
+alter table sys_user add constraint sys_user_fk3 foreign key(groupId) references sys_user_group(id);
+alter table sys_user add relation text;#补充人际关系字段
+alter table sys_user add avocation text;#补充业余爱好字段
+操作表:该表存储系统给所具有的所有功能
+sys_popedom
+create table sys_popedom
+(
+popedom_Module varchar(30),#模块名称
+popedom_Privilege varchar(30),#操作名称
+sort    Integer(11),#排序
+popedom_Name varchar(200),#标题
+title varchar(200),#提示
+remark text,#备注
+primary key(popedom_Module,popedom_Privilege)
+);      
+#存储用户的功能放置在这张表中
+create table sys_popedom_privilege(
+	roleId varchar(36) default null,#权限组编号
+	popedom_Module varchar(30),#模块名称
+	popedom_Privilege varchar(30),#操作名称
+	primary key(roleId,popedom_Module,popedom_Privilege)
+);  
+#菜单表
+CREATE TABLE sys_menu
+(
+   menuModule     VARCHAR(30),                              #模块名称
+   menuPrivilege  VARCHAR(30),                              #操作名称 
+   sort           INTEGER(11),                              #排序字段              
+   menuName       VARCHAR(200),                             #中文名称
+   title          VARCHAR(200),                             #标题
+   url            VARCHAR(200),                             #链接路径
+   target         VARCHAR(20),                              #目标框架
+   icon           VARCHAR(20),                              #使用的图标
+   remark         TEXT,                                     #说明
+   PRIMARY KEY(menuModule,menuPrivilege)
+)  
+#菜单权限表
+CREATE TABLE sys_menu_privilege
+(
+   roleId         VARCHAR(36),     #权限组编号
+   menuModule     VARCHAR(30),     #模块名称
+   menuPrivilege  VARCHAR(30),     #操作名称
+   PRIMARY KEY(roleId,menuModule,menuPrivilege)
+)
+#客户信息表  
+  CREATE TABLE `c_company` (
+	  `id` int(11) NOT NULL auto_increment,             #编号
+	  `code` varchar(50) default NULL,                  #客户编码
+	  `name` varchar(100) NOT NULL,                     #客户名称
+	  `pycode` varchar(100) default NULL,               #拼音码
+	  `grade` varchar(100) default NULL,                #客户等级(下拉)
+	  `regionName` varchar(100) default NULL,           #区域名称(东北  西北  华北)(下拉)
+	  `source` varchar(100) default NULL,               #客户来源(下拉)
+	  `trade` varchar(100) default NULL,                #所属行业(下拉)
+	  `scale` varchar(100) default NULL,                #公司规模(下拉)
+	  `province` varchar(50) default NULL,              #省份(下拉)
+	  `city` varchar(50) default NULL,                  #城市(下拉)
+	  `postcode` varchar(50) default NULL,              #邮政编码
+	  `address` varchar(200) default NULL,              #联系地址
+	  `email` varchar(100) default NULL,                #电子邮件
+	  `web` varchar(200) default NULL,                  #公司网站
+	  `tel1` varchar(50) default NULL,                  #电话一
+	  `fax` varchar(50) default NULL,                   #传真
+	  `mobile` varchar(50) default NULL,                #手机
+	  `tel2` varchar(50) default NULL,                  #电话二
+	  `nextTouchDate` DATE default NULL,                #下次联系时间
+	  `quality` varchar(100) default NULL,              #客户性质(下拉)
+	  `remark` text,                                    #备注
+	  `dealin` varchar(100) default NULL,               #经营范围(下拉)
+	  `kind` varchar(100) default NULL,                 #企业性质(下拉)
+	  `artificialPerson` varchar(50) default NULL,      #法人代表
+	  `registeMoney` varchar(50) default NULL,          #注册资金
+	  `bank` varchar(100) default NULL,                 #开户银行
+	  `account` varchar(100) default NULL,              #银行账户
+	  `taxCode` varchar(100) default NULL,              #公司税号
+	  `creater` varchar(50) default NULL,               #创建人    --本条记录的添加者(添加的用户名)
+	  `createTime` varchar(19) default NULL,            #创建日期  ---
+	  `updater` varchar(50) default NULL,               #修改人    --本条记录的修改者(中间可能发生多次变更)
+	  `updateTime`  varchar(19) default NULL,           #修改日期  ---
+	  
+	  `ownerUser` int(11) NOT NULL,                     #所属人ID(外键)-----	  
+	  `dispensePerson` varchar(50) default NULL,        #所属人名称  分配人(经手人变更给的人)----
+	  `dispenseDate` varchar(19)   default NULL,        #分配日期(经手人变更的日期)-----
+	  
+	  `shareFlag` char(1) default NULL,                 #共享标志 Y(共享)和N(不共享)
+	  `shareIds` varchar(500) default NULL,             #共享ID客户资料共享给业务人员 格式 #人事编号#人事编号...例如(#12#11#)
+       PRIMARY KEY  (`id`)
+)
+
+#设置外键约束
+alter table c_company
+add CONSTRAINT `c_company_ibfk_2` FOREIGN KEY (`ownerUser`) REFERENCES `sys_user` (`id`)
+#类型信息表
+CREATE TABLE `sys_dictionary_type` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,             #编号
+  `sort` INT(11) DEFAULT NULL,                      #排序序号  该值初始值等id的值(上移 下移)********
+  `remark` TEXT,                                    #备注
+  `code`  VARCHAR(100) DEFAULT NULL,                 #类型唯一标识
+  `value` VARCHAR(200) DEFAULT NULL,                #细节名称例如(东北,华北),
+  `sysFlag` CHAR(1) DEFAULT NULL,                   #是否有效  'N' 表示删除掉    'Y' 可用
+   PRIMARY KEY  (`id`)
+  )
+#省份信息表表编码“B_Province”为在传统数据库创建的表名，这里我们采用 前缀_名称
+#省份信息表表编码“B_Province”为在传统数据库创建的表名，这里我们采用 前缀_名称
+CREATE TABLE b_province (                                                                                            
+   id      INT(11)       NOT NULL AUTO_INCREMENT  ,   #省编号                                                                          
+   name    VARCHAR(100)  DEFAULT NULL,                 #省名称                                                                             
+   pycode  VARCHAR(50)   DEFAULT NULL,    #拼音码
+   primary key(id)              
+)
+#城市信息表
+CREATE TABLE  b_city(                                                                                                  
+   id  INT(11) NOT NULL AUTO_INCREMENT   PRIMARY KEY,      #城市编号                                                                          
+   name  VARCHAR(100) DEFAULT NULL,                        #城市名称                                                                
+   pycode  VARCHAR(50) DEFAULT NULL,                       #城市拼音码                                                             
+   pid  INT(11) DEFAULT NULL,                              #省编号                                                              
+   postcode  VARCHAR(50) DEFAULT NULL,                     #邮编                                                             
+   areacode  VARCHAR(50) DEFAULT NULL                      #区号 
+ );
+
+ALTER TABLE b_city
+ADD CONSTRAINT b_cityP_fk FOREIGN KEY(pid) REFERENCES b_province(id);
+#编码规则表
+ CREATE TABLE sys_code_rule (
+   id                INTEGER(11) NOT NULL AUTO_INCREMENT,    #编号 
+   module            VARCHAR(20),                            #模块名称(固定) 
+   areaPrefix        VARCHAR(20),                            #编码前缀(可变)
+   areaTime          VARCHAR(20),                            #日期位(可变)
+   glideBit          INTEGER(11),                            #流水位(可变)
+   currentCode       VARCHAR(50),                            #预览(显示的提供看的)
+   tabName           VARCHAR(50),                            #表名(固定) 
+   available         CHAR(10),                               #是否有效(Y和N两个值,如果是保存是Y ,如果"#编码前缀,#日期位,#流水位中有一个发生变化则修改为Y)
+   nextseq           VARCHAR(20),                            #下次产生的序号
+   curDate           VARCHAR(10),                            #序号对应的日期(yyyyMMdd) 
+   PRIMARY KEY (id)
+ )
